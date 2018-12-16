@@ -1,0 +1,35 @@
+
+<div class="container color-dark">
+  <div class="col">
+    <p>Ajouter une liste pour planifier un budget pour vos courses</p>
+  </div>
+  <div class="col">
+    <p>Votre liste pour faire les courses ({{ itemCount }})</p>
+  </div>
+</div>
+<div class="container-two color-light" [@goals]="goals.length">
+  <div class="col">
+    <p class="sm">Utilisez ce formulaire pour ajouter une liste de tous ce dont vous auriez besoin pour faire les courses</p>
+
+    <form action="">
+      <input type="text" class="txt" name="item" placeholder="Commencez à faire vos courses" [(ngModel)]="goalText">
+      <input type="number" class="txt price" name="price-item" placeholder="Prix" [(ngModel)]="priceNumber">
+      <span>TND</span>
+      <input type="submit" class="btn" [value]="btnText" (click)="addItem()">
+    </form>
+  </div>
+  <div class="col">
+    <p class="life-container" *ngFor="let goal of goals; let i of index" (click)="removeItem(i)">
+      {{ goal }}
+    </p>
+  </div>
+  <div class="col">
+      <input *ngFor="let price of priceGoals; let i of index"  type="text" class="txt price number" value="{{price}} TND" >
+  </div>
+</div>
+<div class="container color-dark">
+  <div class="col"></div>
+  <div class="col" style="text-align: right;">
+      <span>Total : {{ totalprice }} TND</span>
+  </div>
+</div>
